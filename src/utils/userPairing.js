@@ -15,11 +15,11 @@ const rotate = array => {
 
 const userPairing = participants => {
   participants = shuffle(participants);
-  let matches = rotate(participants.slice(0));
+  let recievers = rotate(participants.slice(0));
   let pairs = [];
 
   for (var i = 0; i < participants.length; i++) {
-    pairs.push([participants[i], matches[i]]);
+    pairs.push([participants[i], recievers[i]]);
   }
 
   return pairs;

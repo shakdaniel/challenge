@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchUsers } from "../actions/userActions";
@@ -28,23 +28,20 @@ class Participants extends Component {
       userPairing(duParticipants)
     );
 
-    console.log(participants);
     return participants.map(user => (
       <li key={user[0].guid}>
-        {/* {user[0].department} {user[0].location} <br /> */}
-        {user[0].name.first} {user[0].name.last} -> {user[1].name.first}{" "}
-        {user[1].name.last}
+        <div className="giver">
+          {user[0].name.first} {user[0].name.last}
+        </div>
+        <div className="reciever">
+          {user[1].name.first} {user[1].name.last}
+        </div>
       </li>
     ));
   }
 
   render() {
-    return (
-      <Fragment>
-        <h2>Users</h2>
-        <ul>{this.renderUsers()}</ul>
-      </Fragment>
-    );
+    return <ul>{this.renderUsers()}</ul>;
   }
 }
 

@@ -10,5 +10,8 @@ export const fetchUsers = () => dispatch => {
         type: FETCH_USERS,
         users: data.users
       })
-    );
+    )
+    .catch(err => {
+      console.error(err);
+    });
 };

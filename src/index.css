@@ -1,10 +1,239 @@
-body {
+@import url("https://fonts.googleapis.com/css?family=Black+And+White+Picture");
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700");
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  background: #fcebd9;
+  color: #3c2f2f;
+  padding-bottom: 60px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  margin: 0 20px;
+  background: #fff;
+  box-shadow: 0 20px 20px -10px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+#root > * {
+  display: flex;
+  flex: 1 100%;
+}
+
+header {
+  font-family: "Black And White Picture", sans-serif;
+  font-size: 4em;
+  color: #dfccaf;
+  justify-content: center;
+  align-items: center;
+  background: #3c2f2f;
+  height: 80px;
+  overflow: hidden;
+}
+nav {
+  background: #d9c3b5;
+  color: #7d6e6a;
+  text-align: center;
+  padding: 10px 30px;
+}
+
+ul {
+  flex-flow: row wrap;
+  padding: 40px 20px;
+  background: fff;
+}
+ul > li {
+  display: inline-block;
+  width: 100%;
+  margin: 10px;
+  color: #ef9f88;
+}
+
+ul > li > * {
+  position: relative;
+  display: inline-block;
+  width: calc(50% - 20px);
+  text-align: center;
+  padding: 20px 5px;
+  letter-spacing: 1px;
+  font-size: 1em;
+  background: #fff;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+}
+ul > li > .giver {
+  float: left;
+  margin-right: 10px;
+}
+ul > li > .giver:before {
+  content: "→";
+  padding: 20px 0;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 40px;
+  height: 100%;
+  text-align: center;
+  font-size: 30px;
+}
+ul > li > .reciever {
+  float: right;
+  margin-left: 10px;
+}
+@media only screen and (min-width: 768px) {
+  #root {
+    margin: 0 40px;
+  }
+  ul > li {
+    width: calc(50% - 40px);
+  }
+  ul > li:nth-child(odd) {
+    float: left;
+    margin-right: 30px;
+  }
+  ul > li:nth-child(even) {
+    float: right;
+    margin-left: 30px;
+  }
+  ul > li > * {
+    padding: 20px 15px;
+  }
+}
