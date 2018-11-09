@@ -1,9 +1,27 @@
 // Dependencies
-import React from "react";
+import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import Header from "./components/Header";
+import Toolbar from "./components/Toolbar";
+import Participants from "./components/Participants";
 import "./index.css";
-import App from "./containers/App";
+import store from "./store";
 import * as serviceWorker from "./serviceWorker";
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Fragment>
+          <Header />
+          <Toolbar />
+          <Participants />
+        </Fragment>
+      </Provider>
+    );
+  }
+}
 
 ReactDOM.render(<App />, document.getElementById("root"));
 

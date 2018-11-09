@@ -1,7 +1,6 @@
 import { FETCH_USERS } from "./types";
 
 export const fetchUsers = () => dispatch => {
-  console.log("fetching");
   fetch(
     "https://hbc-frontend-challenge.hbccommon.private.hbc.com/coffee-week/users"
   )
