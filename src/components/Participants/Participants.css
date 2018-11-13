@@ -1,8 +1,8 @@
 ul {
   position: fixed;
-  top: 60px;
+  top: 70px;
   width: 100%;
-  height: calc(100% - 110px);
+  height: calc(100% - 120px);
   padding: 30px 20px;
   text-align: center;
   letter-spacing: 1px;
