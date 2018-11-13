@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchUsers } from "../actions/userActions";
-import userPairing from "../utils/userPairing";
+import { fetchUsers } from "../../actions/userActions";
+import userPairing from "../../utils/userPairing";
+import "./Participants.css";
 
 class Participants extends Component {
   componentWillMount() {
@@ -11,23 +12,12 @@ class Participants extends Component {
 
   renderUsers() {
     const users = [...this.props.users];
+    const engineering = users.filter(user => user.department === "engineering");
+    const ny = engineering.filter(user => user.location === "ny");
+    const dub = engineering.filter(user => user.location === "dub");
+    const participants = userPairing(ny).concat(userPairing(dub));
 
-    const nyParticipants = [];
-
-    const duParticipants = [];
-
-    for (let user of users) {
-      if (user.department === "engineering" && user.location === "ny") {
-        nyParticipants.push(user);
-      }
-      if (user.department === "engineering" && user.location === "dub") {
-        duParticipants.push(user);
-      }
-    }
-    const participants = userPairing(nyParticipants).concat(
-      userPairing(duParticipants)
-    );
-
+    // console.log(participants);
     return participants.map(user => (
       <li key={user[0].guid}>
         <div className="giver">

@@ -13,16 +13,16 @@ const rotate = array => {
   return array;
 };
 
-const userPairing = participants => {
-  participants = shuffle(participants);
-  let recievers = rotate(participants.slice(0));
-  let pairs = [];
+const userPairing = giver => {
+  giver = shuffle(giver);
+  let recievers = rotate(giver.slice(0));
+  let match = [];
 
-  for (var i = 0; i < participants.length; i++) {
-    pairs.push([participants[i], recievers[i]]);
+  for (var i = 0; i < giver.length; i++) {
+    match.push(Object.assign({}, [giver[i], recievers[i]]));
   }
 
-  return pairs;
+  return match;
 };
 
 export default userPairing;

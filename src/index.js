@@ -2,10 +2,13 @@
 import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import Header from "./components/Header";
-import Toolbar from "./components/Toolbar";
-import Participants from "./components/Participants";
+
 import "./index.css";
+
+import Header from "./components/Header/Header";
+import Toolbar from "./components/Toolbar/Toolbar";
+import Participants from "./components/Participants/Participants";
+
 import store from "./store";
 import * as serviceWorker from "./serviceWorker";
 
