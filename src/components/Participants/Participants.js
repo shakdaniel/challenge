@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchUsers } from "../../actions/userActions";
+import userFilter from "../../utils/userFilter";
 import userPairing from "../../utils/userPairing";
 import "./Participants.css";
 
@@ -12,19 +13,25 @@ class Participants extends Component {
 
   renderUsers() {
     const users = [...this.props.users];
-    const engineering = users.filter(user => user.department === "engineering");
-    const ny = engineering.filter(user => user.location === "ny");
-    const dub = engineering.filter(user => user.location === "dub");
-    const participants = userPairing(ny).concat(userPairing(dub));
-
-    // console.log(participants);
-    return participants.map(user => (
-      <li key={user[0].guid}>
+    const engineering = userFilter(users, "department", "engineering");
+    const ny = userFilter(engineering, "location", "ny");
+    const dub = userFilter(engineering, "location", "dub");
+    const matches = [...userPairing(ny), ...userPairing(dub)];
+    return matches.map(user => (
+      <li key={user.take.id}>
         <div className="giver">
-          {user[0].name.first} {user[0].name.last}
+          {`
+          ${user.give.name}
+          (${user.give.department}, 
+          ${user.give.location})
+          `}
         </div>
         <div className="reciever">
-          {user[1].name.first} {user[1].name.last}
+          {`
+          ${user.take.name}
+          (${user.take.department}, 
+          ${user.take.location})
+          `}
         </div>
       </li>
     ));
