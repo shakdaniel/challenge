@@ -13,6 +13,7 @@ class Participants extends Component {
 
   renderUsers() {
     const users = [...this.props.users];
+    // console.log(users);
     const engineering = userFilter(users, "department", "engineering");
     const ny = userFilter(engineering, "location", "ny");
     const dub = userFilter(engineering, "location", "dub");
@@ -22,14 +23,14 @@ class Participants extends Component {
         <div className="giver">
           {`
           ${user.give.name}
-          (${user.give.department}, 
+          (${user.give.department},
           ${user.give.location})
           `}
         </div>
         <div className="reciever">
           {`
           ${user.take.name}
-          (${user.take.department}, 
+          (${user.take.department},
           ${user.take.location})
           `}
         </div>
