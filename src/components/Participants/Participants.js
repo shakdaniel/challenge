@@ -1,58 +1,57 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { fetchUsers } from "../../actions/userActions";
+import React, { Fragment, useState, useEffect } from "react";
 import userFilter from "../../utils/userFilter";
 import userPairing from "../../utils/userPairing";
 import "./Participants.css";
 
-class Participants extends Component {
-  componentWillMount() {
-    this.props.fetchUsers();
-  }
+const Participants = () => {
+  const url =
+    "https://hbc-frontend-challenge.hbccommon.private.hbc.com/coffee-week/users";
 
-  renderUsers() {
-    const users = [...this.props.users];
-    // console.log(users);
-    const engineering = userFilter(users, "department", "engineering");
-    const ny = userFilter(engineering, "location", "ny");
-    const dub = userFilter(engineering, "location", "dub");
-    const matches = [...userPairing(ny), ...userPairing(dub)];
-    return matches.map(user => (
-      <li key={user.take.id}>
-        <div className="giver">
-          {`
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        setUsers(data.users); // set users in state
+      });
+  }, []); // empty array because we only run once
+
+  console.log(users);
+
+  const newUsers = [...users];
+  const engineering = userFilter(newUsers, "department", "engineering");
+  const ny = userFilter(engineering, "location", "ny");
+  const dub = userFilter(engineering, "location", "dub");
+  const matches = [...userPairing(ny), ...userPairing(dub)];
+
+  console.log(matches);
+
+  return (
+    <Fragment>
+      <h1>Matches</h1>
+      <ul>
+        {matches.map(user => (
+          <li key={user.take.id}>
+            <div className="giver">
+              {`
           ${user.give.name}
           (${user.give.department},
           ${user.give.location})
           `}
-        </div>
-        <div className="reciever">
-          {`
+            </div>
+            <div className="reciever">
+              {`
           ${user.take.name}
           (${user.take.department},
           ${user.take.location})
           `}
-        </div>
-      </li>
-    ));
-  }
-
-  render() {
-    return <ul>{this.renderUsers()}</ul>;
-  }
-}
-
-Participants.propTypes = {
-  fetchUsers: PropTypes.func.isRequired,
-  users: PropTypes.array.isRequired
+            </div>
+          </li>
+        ))}
+      </ul>
+    </Fragment>
+  );
 };
 
-const mapStateToProps = state => ({
-  users: state.users.items
-});
-
-export default connect(
-  mapStateToProps,
-  { fetchUsers }
-)(Participants);
+export default Participants;

@@ -1,5 +1,5 @@
 // Dependencies
-import React, { Fragment } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import "normalize.css";
@@ -14,11 +14,9 @@ import * as serviceWorker from "./serviceWorker";
 
 const App = () => (
   <Provider store={store}>
-    <Fragment>
-      <Header />
-      <Toolbar />
-      <Participants />
-    </Fragment>
+    <Header />
+    <Toolbar />
+    <Participants />
   </Provider>
 );
 

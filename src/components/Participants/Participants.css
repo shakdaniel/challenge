@@ -1,6 +1,12 @@
-ul {
+h1 {
   position: fixed;
   top: 70px;
+  width: 100%;
+  padding: 0 20px;
+}
+ul {
+  position: fixed;
+  top: 90px;
   width: 100%;
   height: calc(100% - 120px);
   padding: 30px 20px;
@@ -52,8 +58,11 @@ ul > li > .giver:after {
 }
 
 @media only screen and (min-width: 768px) {
-  ul {
+  h1 {
     top: 130px;
+  }
+  ul {
+    top: 150px;
     height: calc(100% - 130px);
     font-size: 1.7vw;
   }
